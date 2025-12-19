@@ -84,7 +84,7 @@ export default function DespairDecay() {
           Slow, inevitable decay. Hope is not lost — it was never relevant.<br />
           Not explosion, but erosion. Not pain, but exhaustion.
         </p>
-        <div className="text-[0.95rem] tracking-[0.1em] text-[#8b4a3a]/90">
+        <div className="text-[1.33rem] tracking-[0.1em] text-text">
           Resignation → Numbness → Erosion → Silent Acceptance
         </div>
       </section>
@@ -106,7 +106,7 @@ export default function DespairDecay() {
               <p className="text-[#7a7a7a]">Slow, inevitable decay. Hope is not lost — it was never relevant. Not explosion, but <strong className="text-[#d4d4d4]">erosion</strong>. Not pain, but <strong className="text-[#d4d4d4]">exhaustion</strong>.</p>
             </PackCard>
             <PackCard title="Emotional Axis">
-              <p className="text-[#7a7a7a]">Resignation → Numbness → Inner Decay → Silent Acceptance</p>
+              <p className="text-[1.2rem] text-text">Resignation → Numbness → Inner Decay → Silent Acceptance</p>
             </PackCard>
             <PackCard title="Perfect For">
               <p className="text-[#7a7a7a]">Doom, Sludge, Post-Metal, Funeral Doom & atmospheric projects focused on exhaustion and slow collapse.</p>
@@ -118,7 +118,7 @@ export default function DespairDecay() {
           <PackList items={['Abandoned places', 'Damp cold', 'Body and mind slowly dissolving', 'Time as sickness', 'Life as something that consumes itself']} />
 
           <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">Dynamics / Tempo</h3>
-          <p className="text-text-muted leading-relaxed">Very slow → dragging → repetitive → doesn't break out, simply ends</p>
+          <p className="text-[1.2rem] text-text leading-relaxed">Very slow → dragging → repetitive → doesn't break out, simply ends</p>
         </div>
       </section>
 
