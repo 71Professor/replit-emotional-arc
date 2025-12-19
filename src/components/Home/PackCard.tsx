@@ -100,7 +100,7 @@ export default function PackCard({ pack, index }: PackCardProps) {
           >
             {pack.title}
           </h3>
-          <p className="text-text-muted leading-relaxed max-w-[600px]">
+          <p className="text-text leading-relaxed max-w-[600px]">
             {pack.description}
           </p>
           <div className="flex items-center gap-8 mt-2 md:flex-col md:items-start">
