@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despair & Decay — Metal Mood Pack 01</title>
+    <meta name="description" content="Everything erodes. Slowly. Quietly. A mood pack for Doom, Sludge, Post-Metal exploring exhaustion and inevitable decline.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Despair & Decay Color Palette */
+        :root {
+            --dd-dirty-gray: #7a7a7a;
+            --dd-matte-brown: #6b5a47;
+            --dd-rust-red: #8b4a3a;
+            --dd-washed-green: #6a7a5f;
+            --dd-ash-white: #d4d4d4;
+        }
+
+        /* Additional styles specific to pack detail page */
+        .pack-hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--spacing-xxl) var(--spacing-md);
+            background:
+                radial-gradient(ellipse at top, rgba(107, 90, 71, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(139, 74, 58, 0.05) 0%, rgba(106, 122, 95, 0.03) 100%);
+            border-bottom: 1px solid rgba(107, 90, 71, 0.3);
+            position: relative;
+        }
+
+        .pack-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(122, 122, 122, 0.03) 2px, rgba(122, 122, 122, 0.03) 4px);
+            pointer-events: none;
+        }
+
+        .pack-hero-number {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            color: var(--dd-rust-red);
+            opacity: 0.8;
+            margin-bottom: var(--spacing-sm);
+            text-shadow: 0 0 20px rgba(139, 74, 58, 0.3);
+        }
+
+        .pack-hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--dd-matte-brown);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 10px rgba(107, 90, 71, 0.5);
+        }
+
+        .pack-hero-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--dd-dirty-gray);
+            max-width: 800px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .pack-hero-emotion {
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            color: var(--dd-rust-red);
+            opacity: 0.9;
+        }
+
+        .pack-section {
+            padding: var(--spacing-xl) 0;
+            border-bottom: 1px solid rgba(122, 122, 122, 0.1);
+        }
+
+        .pack-section:nth-child(even) {
+            background: linear-gradient(90deg,
+                rgba(107, 90, 71, 0.02) 0%,
+                rgba(106, 122, 95, 0.02) 50%,
+                rgba(107, 90, 71, 0.02) 100%);
+        }
+
+        .pack-section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-lg);
+            color: var(--dd-matte-brown);
+            border-left: 4px solid var(--dd-rust-red);
+            padding-left: var(--spacing-md);
+        }
+
+        .pack-section-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            color: var(--dd-dirty-gray);
+        }
+
+        .pack-content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+
+        .pack-card {
+            background: linear-gradient(135deg, rgba(107, 90, 71, 0.05) 0%, rgba(106, 122, 95, 0.03) 100%);
+            border: 1px solid rgba(107, 90, 71, 0.3);
+            padding: var(--spacing-md);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--dd-rust-red), var(--dd-washed-green));
+            transition: height var(--transition-base);
+        }
+
+        .pack-card:hover {
+            border-color: rgba(139, 74, 58, 0.5);
+            background: linear-gradient(135deg, rgba(107, 90, 71, 0.08) 0%, rgba(106, 122, 95, 0.05) 100%);
+            transform: translateY(-2px);
+        }
+
+        .pack-card:hover::before {
+            height: 100%;
+        }
+
+        .pack-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-sm);
+            color: var(--dd-rust-red);
+        }
+
+        .pack-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pack-list li {
+            padding: var(--spacing-xs) 0;
+            padding-left: var(--spacing-md);
+            position: relative;
+            color: var(--dd-dirty-gray);
+            line-height: 1.7;
+        }
+
+        .pack-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--dd-rust-red);
+            opacity: 0.7;
+        }
+
+        .fragment-box {
+            background: linear-gradient(90deg, rgba(107, 90, 71, 0.08) 0%, rgba(139, 74, 58, 0.05) 100%);
+            border-left: 3px solid var(--dd-rust-red);
+            border-right: 1px solid rgba(106, 122, 95, 0.2);
+            padding: var(--spacing-md);
+            margin: var(--spacing-sm) 0;
+            font-style: italic;
+            color: var(--dd-ash-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fragment-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--dd-washed-green), transparent);
+            opacity: 0.3;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-md);
+        }
+
+        .color-swatch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .color-box {
+            width: 80px;
+            height: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-label {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--dd-dirty-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all var(--transition-base);
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-left: 2px solid transparent;
+        }
+
+        .back-link:hover {
+            color: var(--dd-rust-red);
+            border-left-color: var(--dd-rust-red);
+            padding-left: var(--spacing-md);
+        }
+
+        .back-link::before {
+            content: '←';
+            transition: transform var(--transition-base);
+        }
+
+        .back-link:hover::before {
+            transform: translateX(-4px);
+        }
+
+        /* Enhanced styling for color palette description text */
+        .pack-section p {
+            color: var(--dd-dirty-gray);
+        }
+
+        .pack-section p strong {
+            color: var(--dd-ash-white);
+        }
+
+        /* Navigation styling specific to this page */
+        .nav-link:hover {
+            color: var(--dd-rust-red) !important;
+        }
+
+        .nav-link::after {
+            background-color: var(--dd-rust-red) !important;
+        }
+
+        /* Button styling for this page */
+        .btn-primary:hover {
+            background-color: var(--dd-matte-brown) !important;
+            border-color: var(--dd-matte-brown) !important;
+        }
+
+        .btn-secondary {
+            border-color: var(--dd-dirty-gray) !important;
+            color: var(--dd-dirty-gray) !important;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--dd-rust-red) !important;
+            color: var(--dd-rust-red) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Grain overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-brand">METAL MOOD PACKS</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#arc" class="nav-link">The Arc</a></li>
+                <li><a href="index.html#packs" class="nav-link">Packs</a></li>
+                <li><a href="index.html#bundle" class="nav-link">Bundle</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pack Hero -->
+    <section class="pack-hero">
+        <div class="pack-hero-number">PACK 01</div>
+        <h1 class="pack-hero-title">DESPAIR & DECAY</h1>
+        <p class="pack-hero-description">
+            Slow, inevitable decay. Hope is not lost — it was never relevant.<br>
+            Not explosion, but erosion. Not pain, but exhaustion.
+        </p>
+        <div class="pack-hero-emotion">Resignation → Numbness → Erosion → Silent Acceptance</div>
+    </section>
+
+    <!-- Mood Essence -->
+    <section class="pack-section">
+        <div class="container">
+            <a href="index.html#packs" class="back-link">Back to All Packs</a>
+
+            <h2 class="pack-section-title">1. Mood Essence</h2>
+
+            <div class="pack-content-grid">
+                <div class="pack-card">
+                    <h4>Core Feeling</h4>
+                    <p>Slow, inevitable decay. Hope is not lost — it was never relevant. Not explosion, but <strong>erosion</strong>. Not pain, but <strong>exhaustion</strong>.</p>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Emotional Axis</h4>
+                    <p>Resignation → Numbness → Inner Decay → Silent Acceptance</p>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Perfect For</h4>
+                    <p>Doom, Sludge, Post-Metal, Funeral Doom & atmospheric projects focused on exhaustion and slow collapse.</p>
+                </div>
+            </div>
+
+            <h3 class="pack-section-subtitle">Associations</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Visual and sensory elements that embody the mood's essence. These atmospheric touchstones help ground your creative work in tangible, physical decay—spaces and sensations that evoke slow dissolution and the weight of exhaustion.</p>
+            <ul class="pack-list">
+                <li>Abandoned places</li>
+                <li>Damp cold</li>
+                <li>Body and mind slowly dissolving</li>
+                <li>Time as sickness</li>
+                <li>Life as something that consumes itself</li>
+            </ul>
+
+            <h3 class="pack-section-subtitle">Dynamics / Tempo</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">The structural rhythm and movement pattern for this mood. Despair doesn't accelerate or explode—it drags. Use this guide to maintain the suffocating pace of erosion throughout your composition.</p>
+            <p style="color: var(--color-text-muted); line-height: 1.8;">Very slow → dragging → repetitive → doesn't break out, simply ends</p>
+        </div>
+    </section>
+
+    <!-- Language & Words -->
+    <section class="pack-section">
+        <div class="container">
+            <h2 class="pack-section-title">2. Word Fields & Language</h2>
+
+            <div class="pack-content-grid">
+                <div class="pack-card">
+                    <h4>Key Terms</h4>
+                    <ul class="pack-list">
+                        <li>rot</li>
+                        <li>decay</li>
+                        <li>rust</li>
+                        <li>ruin</li>
+                        <li>mold</li>
+                        <li>erosion</li>
+                        <li>collapse</li>
+                        <li>sickness</li>
+                        <li>remains</li>
+                        <li>weight</li>
+                        <li>silence</li>
+                        <li>stagnant</li>
+                        <li>ashes</li>
+                        <li>residue</li>
+                    </ul>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Verbs</h4>
+                    <ul class="pack-list">
+                        <li>rot</li>
+                        <li>erode</li>
+                        <li>suffocate</li>
+                        <li>wither</li>
+                        <li>sink</li>
+                        <li>corrode</li>
+                        <li>linger</li>
+                        <li>stagnate</li>
+                        <li>crumble</li>
+                        <li>leak</li>
+                    </ul>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Adjectives</h4>
+                    <ul class="pack-list">
+                        <li>exhausted</li>
+                        <li>decaying</li>
+                        <li>hollow</li>
+                        <li>damp</li>
+                        <li>brittle</li>
+                        <li>numb</li>
+                        <li>lifeless</li>
+                        <li>collapsing</li>
+                        <li>stale</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="pack-section-subtitle">Metaphors & Imagery</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Conceptual frameworks that translate abstract despair into visceral language. These comparisons turn inner states into physical decay, giving listeners tangible anchors for intangible exhaustion. Use them to build lyrical coherence.</p>
+            <ul class="pack-list">
+                <li>Body as abandoned ruin</li>
+                <li>Thoughts as stagnant water</li>
+                <li>Time as rust</li>
+                <li>Hope as dead nerve</li>
+                <li>Breath as mechanical duty</li>
+            </ul>
+
+            <h3 class="pack-section-subtitle">Avoid (Mood Killers)</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Elements that break the mood's integrity. Despair is not anger or rebellion—it's resignation. These common metal tropes will disrupt the atmosphere you're building. Keep them out to maintain authenticity.</p>
+            <ul class="pack-list">
+                <li>Anger, aggression, catharsis</li>
+                <li>Sudden outbursts or "liberation"</li>
+                <li>Clear enemies or blame</li>
+                <li>Heroic language</li>
+                <li>"Battle" narratives</li>
+            </ul>
+
+            <h3 class="pack-section-subtitle">Language Tone</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">The overall quality and delivery style of your language. This mood demands exhaustion in every syllable—not dramatic or poetic, but weathered and depleted. Write as if speaking requires effort.</p>
+            <p style="color: var(--color-text-muted); line-height: 1.8;">Dry, tired, heavy, repetitive, physical — more <strong>state</strong> than action</p>
+        </div>
+    </section>
+
+    <!-- Lyric Fragments -->
+    <section class="pack-section">
+        <div class="container">
+            <h2 class="pack-section-title">3. Text & Lyric Fragments</h2>
+
+            <h3 class="pack-section-subtitle">Verse Fragments</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Ready-to-use lyric lines for verses and main sections. Each fragment captures the core mood with complete, self-contained imagery. Use them directly, combine them, or let them inspire your own lines.</p>
+            <div class="fragment-box">Everything rots at the same pace</div>
+            <div class="fragment-box">I wake up already exhausted</div>
+            <div class="fragment-box">The walls breathe mold and memory</div>
+            <div class="fragment-box">Time leaks through cracks in the skin</div>
+            <div class="fragment-box">Decay is not an end — it is a method</div>
+            <div class="fragment-box">Nothing hurts anymore, and that is the sickness</div>
+            <div class="fragment-box">We outlived the reason to continue</div>
+
+            <h3 class="pack-section-subtitle">Hook / Refrain Ideas</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Repetitive, memorable lines designed for choruses and refrains. These fragments are built for repetition—simple, direct statements that anchor your song's emotional core through cyclical return.</p>
+            <div class="fragment-box">Still breathing, still decaying</div>
+            <div class="fragment-box">No collapse — just slow disappearance</div>
+            <div class="fragment-box">This is not pain, this is erosion</div>
+            <div class="fragment-box">Rot with me</div>
+
+            <h3 class="pack-section-subtitle">Spoken Word / Intro / Outro</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Atmospheric statements for framing your piece. These contemplative lines work best delivered without melody—raw, unadorned observations that set the tone or provide closure with quiet finality.</p>
+            <div class="fragment-box">There was no moment when it broke. It just never healed.</div>
+            <div class="fragment-box">Decay does not scream. It waits.</div>
+
+            <h3 class="pack-section-subtitle">Open-End Fragments</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Incomplete thoughts that trail into silence. These unfinished lines embody exhaustion itself—too tired to complete the sentence. Let them hang, unresolved, suggesting meanings that words can't reach.</p>
+            <div class="fragment-box">We are still here, but—</div>
+            <div class="fragment-box">The weight keeps—</div>
+            <div class="fragment-box">Everything feels—</div>
+            <div class="fragment-box">No strength left to—</div>
+        </div>
+    </section>
+
+    <!-- Visual Prompts -->
+    <section class="pack-section">
+        <div class="container">
+            <h2 class="pack-section-title">4. Visual & Image Prompts</h2>
+
+            <h3 class="pack-section-subtitle">Album Cover — Basic Structure</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">A foundational prompt for generating album artwork that captures the mood's visual essence. This base template establishes atmosphere, lighting, and subject matter—ready to use with AI image generators or as reference for traditional artists.</p>
+            <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--spacing-md);">
+                abandoned building interior, decay, mold, cracked walls, low light, muted colors, damp atmosphere, slow collapse, no people, cinematic realism, grain texture
+            </p>
+
+            <div class="pack-content-grid">
+                <div class="pack-card">
+                    <h4>Illustrative / Dark Realism</h4>
+                    <p>rotting textures, peeling surfaces, organic decay, muted palette, heavy shadows, realistic but bleak, no dramatic contrast</p>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Abstract / Symbolic</h4>
+                    <p>rusted surfaces, layered textures, erosion patterns, soft blur, desaturated colors, repetition, minimal composition</p>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Lyric Video / Visualizer Background</h4>
+                    <p>slow moving dust, subtle texture movement, film grain, low saturation, static camera, endless stillness</p>
+                </div>
+            </div>
+
+            <h3 class="pack-section-subtitle">Prompt Building Blocks (Combinable)</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Modular elements you can mix and layer into any visual prompt. Add these descriptors to refine atmosphere, enhance texture, or adjust the intensity of decay in your generated images.</p>
+            <ul class="pack-list">
+                <li>low saturation</li>
+                <li>grain / dirt / noise</li>
+                <li>rotting textures</li>
+                <li>soft focus</li>
+                <li>repetition</li>
+                <li>no focal point</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Colors & Forms -->
+    <section class="pack-section">
+        <div class="container">
+            <h2 class="pack-section-title">5. Color & Form Language</h2>
+
+            <h3 class="pack-section-subtitle">Color Palette (Mood Colors)</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">The five essential colors that define this mood's visual identity. Use these hues in artwork, stage design, video production, or merchandise to maintain atmospheric consistency across all visual media.</p>
+            <div class="color-palette">
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: #7a7a7a;"></div>
+                    <div class="color-label">Dirty Gray</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: #6b5a47;"></div>
+                    <div class="color-label">Matte Brown</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: #8b4a3a;"></div>
+                    <div class="color-label">Rust Red</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: #6a7a5f;"></div>
+                    <div class="color-label">Washed Green</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-box" style="background-color: #d4d4d4;"></div>
+                    <div class="color-label">Ash White</div>
+                </div>
+            </div>
+
+            <h3 class="pack-section-subtitle">Light</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Lighting guidance for visual work. Despair doesn't shine or spotlight—it spreads evenly, without drama or focus. This approach eliminates hope through the absence of illumination contrast.</p>
+            <p style="color: var(--color-text-muted); line-height: 1.8;">Flat, diffuse, low contrast — no highlights, no "spotlight"</p>
+
+            <h3 class="pack-section-subtitle">Textures</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Surface qualities that convey physical deterioration. These tactile elements should dominate your visuals—making decay something viewers can almost feel through their screens or on album covers.</p>
+            <p style="color: var(--color-text-muted); line-height: 1.8;">Rust, mold, dust, damp surfaces, peeling layers</p>
+
+            <h3 class="pack-section-subtitle">Forms & Symbols</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Visual motifs that represent structural breakdown. These shapes embody erosion's architecture—not clean breaks but gradual separation, fragmentation without energy, collapse through time rather than force.</p>
+            <ul class="pack-list">
+                <li>Cracks</li>
+                <li>Layers</li>
+                <li>Breaks</li>
+                <li>Distorted rectangles</li>
+                <li>Repetition without development</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- AI Prompt Boosters -->
+    <section class="pack-section">
+        <div class="container">
+            <h2 class="pack-section-title">6. AI Prompt Boosters (Optional)</h2>
+
+            <div class="pack-content-grid">
+                <div class="pack-card">
+                    <h4>Lyrics Prompt</h4>
+                    <p>Write metal lyrics inspired by despair and decay. Avoid anger or rebellion. Focus on exhaustion, erosion, and slow collapse. Use physical metaphors and repetitive language.</p>
+                </div>
+
+                <div class="pack-card">
+                    <h4>Album Concept Prompt</h4>
+                    <p>Create a concept album about slow decay — personal, social, or physical. No climax, no redemption. Each track represents another layer of erosion.</p>
+                </div>
+            </div>
+
+            <h3 class="pack-section-subtitle">Variation Tips</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">Genre-specific adaptations of this mood. Each metal subgenre processes despair differently—these guidelines help you emphasize the right elements for your specific sonic approach while maintaining the core atmosphere.</p>
+            <ul class="pack-list">
+                <li><strong>More Doom:</strong> even less movement, longer lines, repetitions</li>
+                <li><strong>More Sludge:</strong> more physicality, dirt, weight</li>
+                <li><strong>More Post-Metal:</strong> more abstract language, less "I", more state</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Usage Info -->
+    <section class="pack-section">
+        <div class="container">
+            <h2 class="pack-section-title">Usage Information</h2>
+
+            <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--spacing-md);">
+                All content is <strong style="color: var(--color-text);">royalty-free</strong> for creative use (songs, visuals, videos). Redistribution or resale of this pack itself is not permitted.
+            </p>
+
+            <h3 class="pack-section-subtitle">Quick Positioning</h3>
+            <p style="color: var(--dd-dirty-gray); line-height: 1.7; margin-bottom: var(--spacing-md); font-size: 0.95rem;">A concise summary of what this pack represents and who it serves. Use this description when explaining your project's mood to collaborators, labels, or your audience.</p>
+            <div class="fragment-box">
+                <strong>DESPAIR & DECAY</strong> — A slow-burning mood pack focused on exhaustion, erosion, and inevitable decline. Perfect for Doom, Sludge, Post-Metal, Funeral Doom & atmospheric projects.
+            </div>
+
+            <div style="margin-top: var(--spacing-xl); text-align: center;">
+                <a href="index.html#bundle" class="btn btn-primary">Get This Pack</a>
+                <a href="index.html#packs" class="btn btn-secondary">Explore Other Packs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">METAL MOOD PACKS</div>
+                    <p class="footer-tagline">Emotion-driven inspiration for heavy music</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#arc">The Arc</a>
+                    <a href="index.html#packs">Packs</a>
+                    <a href="index.html#bundle">Bundle</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Metal Mood Packs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
