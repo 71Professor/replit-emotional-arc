@@ -7,14 +7,14 @@ interface PackCardProps {
   index: number;
 }
 
-const colorMap: Record<string, { hover: string; gradient: string }> = {
-  despair: { hover: 'hover:text-despair', gradient: 'from-despair/10' },
-  fury: { hover: 'hover:text-fury', gradient: 'from-fury/10' },
-  triumph: { hover: 'hover:text-triumph', gradient: 'from-triumph/10' },
-  pagan: { hover: 'hover:text-pagan', gradient: 'from-pagan/10' },
-  nihilistic: { hover: 'hover:text-nihilistic', gradient: 'from-nihilistic/10' },
-  cosmic: { hover: 'hover:text-cosmic', gradient: 'from-cosmic/10' },
-  apocalyptic: { hover: 'hover:text-apocalyptic', gradient: 'from-apocalyptic/10' },
+const colorMap: Record<string, { color: string; gradient: string }> = {
+  despair: { color: '#8b6f47', gradient: 'rgba(139, 111, 71, 0.1)' },
+  fury: { color: '#a83232', gradient: 'rgba(168, 50, 50, 0.1)' },
+  triumph: { color: '#b8956e', gradient: 'rgba(184, 149, 110, 0.1)' },
+  pagan: { color: '#6b8e5f', gradient: 'rgba(107, 142, 95, 0.1)' },
+  nihilistic: { color: '#7a8e9e', gradient: 'rgba(122, 142, 158, 0.1)' },
+  cosmic: { color: '#6b5b8e', gradient: 'rgba(107, 91, 142, 0.1)' },
+  apocalyptic: { color: '#7e9b7e', gradient: 'rgba(126, 155, 126, 0.1)' },
 };
 
 export default function PackCard({ pack, index }: PackCardProps) {
@@ -95,9 +95,8 @@ export default function PackCard({ pack, index }: PackCardProps) {
         </div>
         <div className="flex flex-col gap-4">
           <h3
-            className={`font-display text-[clamp(1.5rem,3vw,2.2rem)] font-semibold tracking-[0.08em] transition-colors duration-300 ${
-              isHovered ? colors.hover.replace('hover:', '') : ''
-            }`}
+            className="font-display text-[clamp(1.5rem,3vw,2.2rem)] font-semibold tracking-[0.08em] transition-colors duration-300"
+            style={{ color: isHovered ? colors.color : undefined }}
           >
             {pack.title}
           </h3>
@@ -125,8 +124,9 @@ export default function PackCard({ pack, index }: PackCardProps) {
           </div>
         </div>
         <div
-          className={`w-[200px] h-[120px] bg-white/[0.02] border border-white/5 transition-all duration-500 bg-gradient-to-br ${colors.gradient} to-transparent md:hidden`}
+          className="w-[200px] h-[120px] border border-white/5 transition-all duration-500 md:hidden"
           style={{
+            background: `linear-gradient(135deg, ${colors.gradient}, transparent)`,
             transform: isHovered ? 'scale(1.05)' : 'scale(1)',
             opacity: isHovered ? 1 : 0.8,
           }}
