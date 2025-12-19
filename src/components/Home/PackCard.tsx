@@ -104,7 +104,7 @@ export default function PackCard({ pack, index }: PackCardProps) {
             {pack.description}
           </p>
           <div className="flex items-center gap-8 mt-2 md:flex-col md:items-start">
-            <div className="text-sm text-text-muted tracking-[0.05em]">
+            <div className="text-[1.2rem] text-text tracking-[0.05em]">
               {pack.emotionalArc}
             </div>
             <button
