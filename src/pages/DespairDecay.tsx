@@ -673,20 +673,14 @@ export default function DespairDecay() {
                 Each track represents another layer of erosion.
               </p>
             </PackCard>
+            <PackCard title="8.3 Variations">
+              <p className="text-[#d4d4d4] leading-relaxed">
+                <strong className="text-white">More Doom:</strong> even less movement, longer lines, repetition.<br />
+                <strong className="text-white">More Sludge:</strong> more physicality, dirt, weight.<br />
+                <strong className="text-white">More Post-Metal:</strong> abstract language, less "I", more state.
+              </p>
+            </PackCard>
           </div>
-
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">8.3 Variations</h3>
-          <ul className="list-none p-0">
-            <li className="py-2 pl-8 relative text-[#7a7a7a] leading-relaxed before:content-['—'] before:absolute before:left-0 before:text-[#8b4a3a] before:opacity-70">
-              <strong className="text-[#d4d4d4]">More Doom:</strong> even less movement, longer lines, repetition
-            </li>
-            <li className="py-2 pl-8 relative text-[#7a7a7a] leading-relaxed before:content-['—'] before:absolute before:left-0 before:text-[#8b4a3a] before:opacity-70">
-              <strong className="text-[#d4d4d4]">More Sludge:</strong> more physicality, dirt, weight
-            </li>
-            <li className="py-2 pl-8 relative text-[#7a7a7a] leading-relaxed before:content-['—'] before:absolute before:left-0 before:text-[#8b4a3a] before:opacity-70">
-              <strong className="text-[#d4d4d4]">More Post-Metal:</strong> abstract language, less "I", more state
-            </li>
-          </ul>
 
           <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">Image Prompts</h3>
           <div className="space-y-6">
