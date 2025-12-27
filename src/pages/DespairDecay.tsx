@@ -559,7 +559,7 @@ export default function DespairDecay() {
             ))}
           </div>
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.2 Verse Fragments</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">4.2 Verse Fragments</h3>
           {verseFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
           <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.3 Hook / Chorus Ideas</h3>
