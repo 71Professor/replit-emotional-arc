@@ -1,4 +1,45 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+const storyContent = `In the age before memory learned to hold, there stood the First Dwelling. Not built by hands, but willed into being by the need for shelter itself. Its walls did not rise—they simply were. Stone that had never known the chisel. Wood that grew already aged.
+
+For countless turnings of the world, the Dwelling stood. Beings came and went. They did not live within it, for living implies choice. They existed there, as water exists in a vessel. They breathed the same air their grandmothers had breathed. They touched the same walls. The walls touched them back, slowly.
+
+No one remembers when the Dwelling began to forget its purpose.
+
+It was not a collapse. There was no storm, no flame, no enemy at the threshold. The walls simply grew heavier. The air thickened. Moisture found its way between the stones, not violently but patiently, the way time moves through all things. The Dwelling began to taste itself—salt and mineral, the flavor of its own dissolution.
+
+The beings who existed there felt it too. A weight in the chest that had no name. A fatigue that sleep could not cure. They moved through the rooms as they always had, but the rooms no longer held them. The Dwelling had become a space between purpose and emptiness, and they were its last inhabitants.
+
+One by one, they stopped resisting. Not in surrender, for that would require acknowledgment of struggle. They simply ceased. Their breath continued out of habit. Their hearts beat because hearts do not know how to ask permission to stop.
+
+The Dwelling did not mourn them. It could not. It was too busy becoming what it had always been meant to become: a monument to the exhaustion of existing. The wood darkened. The stone softened. Moss arrived, not as invader but as witness. The walls leaned inward, collapsing in increments too small to measure, too constant to notice.
+
+There is no ruin now. The Dwelling is not gone—it is dispersed. It exists in every abandoned place, every structure that stands not out of strength but because falling requires energy it no longer possesses. It breathes in the damp corners where air grows stale. It whispers through the rust that slowly consumes the iron.
+
+The First Dwelling taught the world a truth: that endings are not events. They are conditions. A state of being that simply continues, day after day, until continuation itself becomes the only prayer left.
+
+And still, somewhere in the depths where language breaks, the Dwelling stands. Waiting for nothing. Collapsing toward nothing. Becoming what it always was.
+
+*Still here. Still decaying.*`;
+
+const lyricsContent = {
+  title: "Still Decaying",
+  sections: [
+    { type: "spoken", label: "[Spoken Intro]", lines: ["There was no moment when it broke.", "It simply never healed."] },
+    { type: "verse", label: "[Verse I]", lines: ["I wake up already exhausted", "Time leaks through cracks in the skin", "Walls breathe mold and memory", "Everything rots at the same pace"] },
+    { type: "chorus", label: "[Chorus]", lines: ["Still breathing, still decaying", "No collapse — just slow disappearance"] },
+    { type: "verse", label: "[Verse II]", lines: ["Rust settles where thoughts once moved", "Decay is not an end, it is a method", "Nothing hurts anymore — that is the sickness", "We outlived the reason to continue"] },
+    { type: "chorus", label: "[Chorus]", lines: ["Still breathing, still decaying", "No collapse — just slow disappearance"] },
+    { type: "outro", label: "[Outro]", lines: ["Still here.", "Still decaying."] },
+  ]
+};
+
+const carouselImages = [
+  { src: "/material/images/MoodPack1_Image1.png", alt: "Despair & Decay - Conceptual Image 1" },
+  { src: "/material/images/MoodPack1_Image2.png", alt: "Despair & Decay - Conceptual Image 2" },
+  { src: "/material/images/MoodPack1_Image3.png", alt: "Despair & Decay - Conceptual Image 3" },
+];
 
 const colorPalette = [
   { color: '#7a7a7a', label: 'Dirty Grey' },
@@ -115,6 +156,165 @@ function PackList({ items }: { items: string[] }) {
   );
 }
 
+function StorySection() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const paragraphs = storyContent.split('\n\n');
+  const previewParagraphs = paragraphs.slice(0, 3);
+  const displayParagraphs = isExpanded ? paragraphs : previewParagraphs;
+
+  return (
+    <div className="mb-16 bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+      <h3 className="font-display text-xl font-semibold tracking-[0.05em] mb-6 text-[#8b4a3a]">
+        The Dwelling — A Story of Despair & Decay
+      </h3>
+      <div className="space-y-4 text-[#d4d4d4] leading-relaxed">
+        {displayParagraphs.map((paragraph, i) => (
+          <p key={i} className={paragraph.startsWith('*') ? 'italic text-[#8b4a3a]' : ''}>
+            {paragraph.replace(/\*/g, '')}
+          </p>
+        ))}
+      </div>
+      {paragraphs.length > 3 && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="mt-6 text-[#8b4a3a] hover:text-[#d4d4d4] transition-colors duration-300 text-sm tracking-[0.05em] flex items-center gap-2"
+        >
+          {isExpanded ? '← Show Less' : 'Read Full Story →'}
+        </button>
+      )}
+    </div>
+  );
+}
+
+function AudioPlayer() {
+  return (
+    <div className="mb-12 bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-6">
+      <h4 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">
+        🎵 Still Decaying — Sample Track
+      </h4>
+      <audio controls className="w-full" style={{ filter: 'sepia(20%) saturate(70%)' }}>
+        <source src="/material/songs/song1.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  );
+}
+
+function LyricsDisplay() {
+  return (
+    <div className="mb-16 bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+      <h3 className="font-display text-2xl font-semibold tracking-[0.05em] mb-2 text-[#8b4a3a]">
+        {lyricsContent.title}
+      </h3>
+      <p className="text-[#7a7a7a] text-sm mb-8 italic">Complete Lyrics</p>
+      <div className="space-y-6">
+        {lyricsContent.sections.map((section, i) => (
+          <div key={i} className="space-y-2">
+            <div className="text-[#6b5a47] text-sm font-semibold tracking-[0.1em]">
+              {section.label}
+            </div>
+            <div className={`space-y-1 ${section.type === 'chorus' ? 'pl-4 border-l-2 border-[#8b4a3a]/50' : ''} ${section.type === 'spoken' ? 'italic text-[#7a7a7a]' : 'text-[#d4d4d4]'}`}>
+              {section.lines.map((line, j) => (
+                <p key={j} className="leading-relaxed">{line}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ImageCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div className="mb-16">
+      <h3 className="font-display text-xl font-semibold tracking-[0.05em] mb-6 text-[#7a7a7a]">
+        Conceptual Imagery
+      </h3>
+      <div className="relative bg-black/20 border border-[#6b5a47]/30 overflow-hidden">
+        <div className="aspect-[16/9] relative">
+          <img
+            src={carouselImages[currentIndex].src}
+            alt={carouselImages[currentIndex].alt}
+            className="w-full h-full object-cover transition-opacity duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={goToPrevious}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-black/50 hover:bg-[#8b4a3a]/70 text-white transition-colors duration-300 border border-white/20"
+          aria-label="Previous image"
+        >
+          ←
+        </button>
+        <button
+          onClick={goToNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-black/50 hover:bg-[#8b4a3a]/70 text-white transition-colors duration-300 border border-white/20"
+          aria-label="Next image"
+        >
+          →
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {carouselImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                i === currentIndex
+                  ? 'bg-[#8b4a3a] scale-110'
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
+              aria-label={`Go to image ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+      <p className="text-[#7a7a7a] text-sm mt-4 italic text-center">
+        Image {currentIndex + 1} of {carouselImages.length} — {carouselImages[currentIndex].alt}
+      </p>
+    </div>
+  );
+}
+
+function VideoPlayer() {
+  return (
+    <div className="mb-8">
+      <h4 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">
+        Visualizer Sample
+      </h4>
+      <div className="relative bg-black border border-[#6b5a47]/30 overflow-hidden">
+        <video
+          controls
+          className="w-full aspect-video"
+          poster="/material/images/MoodPack1_Image1.png"
+        >
+          <source src="/material/videos/Moodpack1_Video.mp4" type="video/mp4" />
+          Your browser does not support the video element.
+        </video>
+      </div>
+      <p className="text-[#7a7a7a] text-sm mt-2 italic">
+        Slow-moving atmospheric visuals — dust, grain, endless stillness.
+      </p>
+    </div>
+  );
+}
+
 export default function DespairDecay() {
   return (
     <>
@@ -178,6 +378,8 @@ export default function DespairDecay() {
             2. Wordfield & Language
           </h2>
 
+          <StorySection />
+
           <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-16 mt-8">
             <PackCard title="2.1 Key Terms">
               <PackList items={keyTerms} />
@@ -224,6 +426,9 @@ export default function DespairDecay() {
             4. Lyrics – Writing Aids
           </h2>
 
+          <AudioPlayer />
+          <LyricsDisplay />
+
           <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">4.1 Verse Fragments</h3>
           {verseFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
@@ -245,6 +450,8 @@ export default function DespairDecay() {
             5. Visuals – Conceptual Guidance
           </h2>
 
+          <ImageCarousel />
+
           <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-16 mt-8">
             <PackCard title="5.1 Album / Cover Description">
               <p className="text-[#d4d4d4] leading-relaxed">
@@ -262,7 +469,8 @@ export default function DespairDecay() {
               </p>
             </PackCard>
             <PackCard title="5.3 Motion / Video / Visualizer">
-              <p className="text-[#d4d4d4] leading-relaxed">
+              <VideoPlayer />
+              <p className="text-[#d4d4d4] leading-relaxed mt-4">
                 Slow-moving dust.<br />
                 Subtle texture movement.<br />
                 Static camera.<br />
