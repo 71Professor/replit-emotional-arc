@@ -567,16 +567,16 @@ export default function DespairDecay() {
           <AudioPlayer />
           <LyricsDisplay />
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">4.1 Verse Fragments</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">4.2 Verse Fragments</h3>
           {verseFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.2 Hook / Chorus Ideas</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.3 Hook / Chorus Ideas</h3>
           {hookFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.3 Spoken Word / Intro / Outro</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.4 Spoken Word / Intro / Outro</h3>
           {spokenFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.4 Open-Ended Fragments</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.5 Open-Ended Fragments</h3>
           {openEndFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
         </div>
       </section>
