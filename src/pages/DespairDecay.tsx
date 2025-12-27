@@ -179,6 +179,21 @@ const imagePrompts = [
   },
 ];
 
+const sunoStyles = [
+  {
+    title: 'Subgenre',
+    prompt: 'Slow Doom Metal / Sludge Doom / Funeral Doom / Post-Metal',
+  },
+  {
+    title: 'Tempo & Mood',
+    prompt: 'Very slow, dragging, repetitive. No climax, no release.',
+  },
+  {
+    title: 'Instrumentation',
+    prompt: 'Deep down-tuned guitars with sustained distortion, thick overdriven bass, sparse slow drums, exhausted low growls or half-spoken vocals, damp and murky production with subtle noise textures.',
+  },
+];
+
 function FragmentBox({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-gradient-to-r from-[#6b5a47]/10 to-[#8b4a3a]/5 border-l-[3px] border-l-[#8b4a3a] border-r border-r-[#6a7a5f]/20 p-8 my-4 italic text-[#d4d4d4] relative overflow-hidden">
@@ -693,12 +708,13 @@ export default function DespairDecay() {
           </div>
 
           <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">Suno.com — Style & Sound Description</h3>
-          <div className="bg-[#6b5a47]/10 border border-[#6b5a47]/30 p-6">
-            <p className="text-[#d4d4d4] leading-relaxed">
-              <strong className="text-white">Subgenre:</strong> Slow Doom Metal / Sludge Doom / Funeral Doom / Post-Metal<br /><br />
-              <strong className="text-white">Tempo & Mood:</strong> Very slow, dragging, repetitive. No climax, no release.<br /><br />
-              <strong className="text-white">Instrumentation:</strong> Deep down-tuned guitars with sustained distortion, thick overdriven bass, sparse slow drums, exhausted low growls or half-spoken vocals, damp and murky production with subtle noise textures.
-            </p>
+          <div className="space-y-6">
+            {sunoStyles.map((p, i) => (
+              <div key={i} className="bg-[#6b5a47]/10 border border-[#6b5a47]/30 p-6">
+                <h4 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">{p.title}</h4>
+                <p className="text-[#d4d4d4] leading-relaxed text-sm">{p.prompt}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
