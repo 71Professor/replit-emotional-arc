@@ -106,6 +106,60 @@ const moodKillers = [
   '"Fight" narratives or redemption arcs',
 ];
 
+const usageRitual = {
+  environment: 'A space of stagnation. Dim light, closed doors. Air that does not move. The physical setting must mirror the internal arrest.',
+  mindset: 'Surrender the need for resolution. Accept the weight. There is no energy to be found here, only the endurance of what remains.',
+  entry: 'Do not begin; simply stop resisting. Exhale and allow the silence to become heavy. The mood is entered not by action, but by the cessation of effort.',
+  context: 'Solitary. A dialogue with the decay.',
+};
+
+const trackBlueprint = [
+  {
+    phase: 'Phase I: The Weight Settles',
+    description: 'Introduction of the atmosphere. No sudden entry. A gradual thickening of the air. The realization of the burden.',
+  },
+  {
+    phase: 'Phase II: Erosion',
+    description: 'Repetition establishes the cycle. Energy drains away. The structure holds but trembles under the load. Themes of fatigue and dampness emerge.',
+  },
+  {
+    phase: 'Phase III: The Long Decay',
+    description: 'The core state. Numbness sets in. Movement slows to a crawl. Elements drop away, leaving only the skeleton of the sound or thought.',
+  },
+  {
+    phase: 'Phase IV: Residue',
+    description: 'The ending that is not an end. The sound does not stop; it dissipates. A lingering tone, a final echo, a silence that feels occupied.',
+  },
+];
+
+const soundTextures = [
+  {
+    title: 'Environmental Decay',
+    description: 'The sound of water dripping in a large, empty hall. Dust settling. Wood groaning under shifting weight.',
+  },
+  {
+    title: 'Human Residue',
+    description: 'Heavy, slow breathing. The sound of dry skin moving over fabric. A faint, unintelligible whisper buried in the mix.',
+  },
+  {
+    title: 'Texture',
+    description: 'Analog hiss, vinyl crackle, low-frequency hum (50/60Hz), the sound of a cable being unplugged, mechanical friction.',
+  },
+  {
+    title: 'Space',
+    description: 'Large reverb tails that darken the sound. Muffled high frequencies, as if heard through a thick wall.',
+  },
+];
+
+const creativeQuestions = [
+  'What is the sound of a structure realizing it can no longer stand?',
+  'How does the body move when hope is no longer a fuel?',
+  'If you remove the pain, what remains of the wound?',
+  'What does the room say when the last person leaves?',
+  'How slow can a rhythm be before it becomes a drone?',
+  'What is the texture of a memory that is rotting?',
+];
+
 const imagePrompts = [
   {
     title: 'Cover Image — Slow Interior Decay',
@@ -332,6 +386,38 @@ export default function DespairDecay() {
         </p>
       </section>
 
+      {/* Usage Ritual */}
+      <section className="py-24 border-b border-[#7a7a7a]/10 bg-gradient-to-r from-[#6b5a47]/[0.02] via-[#6a7a5f]/[0.02] to-[#6b5a47]/[0.02]">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <h2 className="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-semibold tracking-[0.05em] mb-16 text-[#6b5a47] border-l-4 border-[#8b4a3a] pl-8">
+            Usage Ritual
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+              <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">Environment</h3>
+              <p className="text-[#d4d4d4] leading-relaxed italic">{usageRitual.environment}</p>
+            </div>
+            <div className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+              <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">Mindset</h3>
+              <p className="text-[#d4d4d4] leading-relaxed italic">{usageRitual.mindset}</p>
+            </div>
+            <div className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+              <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">Entry</h3>
+              <p className="text-[#d4d4d4] leading-relaxed italic">{usageRitual.entry}</p>
+            </div>
+            <div className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+              <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">Context</h3>
+              <p className="text-[#d4d4d4] leading-relaxed italic">{usageRitual.context}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section 1: Mood Description / Essence */}
       <section className="py-24 border-b border-[#7a7a7a]/10">
         <div className="max-w-[1200px] mx-auto px-8">
@@ -351,6 +437,15 @@ export default function DespairDecay() {
             <p>
               A slow, unavoidable process in which energy drains away long before anything visibly collapses. This mood describes exhaustion without drama — a state where nothing breaks suddenly, but everything weakens continuously.
             </p>
+
+            <div className="my-12 p-8 bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+              <h3 className="font-display text-xl font-semibold tracking-[0.05em] mb-6 text-[#8b4a3a]">Time Dimension</h3>
+              <p className="text-[#d4d4d4] leading-relaxed">
+                Time here is not a line; it is a weight. It does not tick forward but accumulates like dust. The past is not gone; it is simply the layer beneath the present. In this state, a minute can stretch into a condition, and a year can feel like a single exhaled breath. It is the time of rusting iron—movement so slow it resembles stillness.
+              </p>
+            </div>
+
             <p>
               Hope is not lost here; it has simply become irrelevant. What remains is weight, dampness, repetition, and the quiet realization that endurance itself has become the burden.
             </p>
@@ -416,6 +511,25 @@ export default function DespairDecay() {
 
           <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">3.2 Recurring Motifs</h3>
           <PackList items={recurringMotifs} />
+        </div>
+      </section>
+
+      {/* Track / Chapter Blueprint */}
+      <section className="py-24 border-b border-[#7a7a7a]/10 bg-gradient-to-r from-[#6b5a47]/[0.02] via-[#6a7a5f]/[0.02] to-[#6b5a47]/[0.02]">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <h2 className="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-semibold tracking-[0.05em] mb-16 text-[#6b5a47] border-l-4 border-[#8b4a3a] pl-8">
+            Track / Chapter Blueprint
+          </h2>
+
+          <div className="space-y-6">
+            {trackBlueprint.map((item, i) => (
+              <div key={i} className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden group hover:border-[#8b4a3a]/50 transition-all duration-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+                <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">{item.phase}</h3>
+                <p className="text-[#d4d4d4] leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -582,6 +696,46 @@ export default function DespairDecay() {
               <strong className="text-white">Tempo & Mood:</strong> Very slow, dragging, repetitive. No climax, no release.<br /><br />
               <strong className="text-white">Instrumentation:</strong> Deep down-tuned guitars with sustained distortion, thick overdriven bass, sparse slow drums, exhausted low growls or half-spoken vocals, damp and murky production with subtle noise textures.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sound Textures & Non-Instrument Elements */}
+      <section className="py-24 border-b border-[#7a7a7a]/10">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <h2 className="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-semibold tracking-[0.05em] mb-16 text-[#6b5a47] border-l-4 border-[#8b4a3a] pl-8">
+            Sound Textures & Non-Instrument Elements
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {soundTextures.map((item, i) => (
+              <div key={i} className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden group hover:border-[#8b4a3a]/50 transition-all duration-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+                <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">{item.title}</h3>
+                <p className="text-[#d4d4d4] leading-relaxed italic">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Open Creative Working Questions */}
+      <section className="py-24 border-b border-[#7a7a7a]/10 bg-gradient-to-r from-[#6b5a47]/[0.02] via-[#6a7a5f]/[0.02] to-[#6b5a47]/[0.02]">
+        <div className="max-w-[1200px] mx-auto px-8">
+          <h2 className="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-semibold tracking-[0.05em] mb-16 text-[#6b5a47] border-l-4 border-[#8b4a3a] pl-8">
+            Open Creative Working Questions
+          </h2>
+
+          <div className="space-y-4">
+            {creativeQuestions.map((question, i) => (
+              <div key={i} className="bg-gradient-to-r from-[#6b5a47]/10 to-[#8b4a3a]/5 border-l-[3px] border-l-[#8b4a3a] border-r border-r-[#6a7a5f]/20 p-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#6a7a5f] to-transparent opacity-30" />
+                <p className="text-[#d4d4d4] leading-relaxed">
+                  <span className="text-[#8b4a3a] font-semibold mr-3">{i + 1}.</span>
+                  {question}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
