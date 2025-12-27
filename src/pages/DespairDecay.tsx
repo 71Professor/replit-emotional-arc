@@ -538,25 +538,6 @@ export default function DespairDecay() {
         </div>
       </section>
 
-      {/* Track / Chapter Blueprint */}
-      <section className="py-24 border-b border-[#7a7a7a]/10 bg-gradient-to-r from-[#6b5a47]/[0.02] via-[#6a7a5f]/[0.02] to-[#6b5a47]/[0.02]">
-        <div className="max-w-[1200px] mx-auto px-8">
-          <h2 className="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-semibold tracking-[0.05em] mb-16 text-[#6b5a47] border-l-4 border-[#8b4a3a] pl-8">
-            Track / Chapter Blueprint
-          </h2>
-
-          <div className="space-y-6">
-            {trackBlueprint.map((item, i) => (
-              <div key={i} className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden group hover:border-[#8b4a3a]/50 transition-all duration-300">
-                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
-                <h3 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">{item.phase}</h3>
-                <p className="text-[#d4d4d4] leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Section 4: Lyrics – Writing Aids */}
       <section className="py-24 border-b border-[#7a7a7a]/10 bg-gradient-to-r from-[#6b5a47]/[0.02] via-[#6a7a5f]/[0.02] to-[#6b5a47]/[0.02]">
         <div className="max-w-[1200px] mx-auto px-8">
@@ -567,16 +548,27 @@ export default function DespairDecay() {
           <AudioPlayer />
           <LyricsDisplay />
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">4.1 Verse Fragments</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">4.1 Track / Chapter Blueprint</h3>
+          <div className="space-y-6">
+            {trackBlueprint.map((item, i) => (
+              <div key={i} className="bg-gradient-to-br from-[#6b5a47]/10 to-[#6a7a5f]/5 border border-[#6b5a47]/30 p-8 relative overflow-hidden group hover:border-[#8b4a3a]/50 transition-all duration-300">
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#8b4a3a] via-[#6b5a47] to-[#6a7a5f]" />
+                <h4 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">{item.phase}</h4>
+                <p className="text-[#d4d4d4] leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.2 Verse Fragments</h3>
           {verseFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.2 Hook / Chorus Ideas</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.3 Hook / Chorus Ideas</h3>
           {hookFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.3 Spoken Word / Intro / Outro</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.4 Spoken Word / Intro / Outro</h3>
           {spokenFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.4 Open-Ended Fragments</h3>
+          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">4.5 Open-Ended Fragments</h3>
           {openEndFragments.map((f, i) => <FragmentBox key={i}>{f}</FragmentBox>)}
         </div>
       </section>
