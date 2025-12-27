@@ -259,9 +259,9 @@ Each track represents another layer of erosion.
 
 ### **8.3 Variations**
 
-- **More Doom:** even less movement, longer lines, repetition  
-- **More Sludge:** more physicality, dirt, weight  
-- **More Post-Metal:** abstract language, less “I”, more state
+More Doom: even less movement, longer lines, repetition.
+More Sludge: more physicality, dirt, weight.
+More Post-Metal: abstract language, less "I", more state.
 
 ---
 
