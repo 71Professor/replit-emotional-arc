@@ -509,14 +509,14 @@ export default function DespairDecay() {
             <PackCard title="2.3 Adjectives">
               <PackList items={adjectives} />
             </PackCard>
+            <PackCard title="2.4 Language Tone">
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                Dry, tired, heavy, repetitive.<br />
+                More <strong className="text-white">state</strong> than action.<br />
+                Physical before emotional.
+              </p>
+            </PackCard>
           </div>
-
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">2.4 Language Tone</h3>
-          <p className="text-[#d4d4d4] leading-relaxed text-lg">
-            Dry, tired, heavy, repetitive.<br />
-            More <strong className="text-white">state</strong> than action.<br />
-            Physical before emotional.
-          </p>
         </div>
       </section>
 
