@@ -373,7 +373,16 @@ export default function DespairDecay() {
   return (
     <>
       {/* Section 0: Cover */}
-      <section className="min-h-[60vh] flex flex-col justify-center items-center text-center py-32 px-8 bg-[radial-gradient(ellipse_at_top,rgba(107,90,71,0.08)_0%,transparent_50%),linear-gradient(180deg,rgba(139,74,58,0.05)_0%,rgba(106,122,95,0.03)_100%)] border-b border-[#6b5a47]/30 relative">
+      <section className="min-h-[60vh] flex flex-col justify-center items-center text-center py-32 px-8 bg-[radial-gradient(ellipse_at_top,rgba(107,90,71,0.08)_0%,transparent_50%),linear-gradient(180deg,rgba(139,74,58,0.05)_0%,rgba(106,122,95,0.03)_100%)] border-b border-[#6b5a47]/30 relative overflow-hidden">
+        {/* Background Image with reduced opacity */}
+        <div className="absolute inset-0 pointer-events-none">
+          <img
+            src="/material/images/MoodPack1_Image1.png"
+            alt=""
+            className="w-full h-full object-cover opacity-15"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        </div>
         <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(122,122,122,0.03)_2px,rgba(122,122,122,0.03)_4px)] pointer-events-none" />
         <div className="font-display text-base tracking-[0.3em] text-[#8b4a3a]/80 mb-4 drop-shadow-[0_0_20px_rgba(139,74,58,0.3)]">
           E-MOODPACK 1
