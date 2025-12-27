@@ -13,6 +13,18 @@ A dark, cinematic web presence for "The Emotional Arc" — a collection of seven
 
 ### Installation
 
+Option 2: CMD statt PowerShell verwenden
+Öffne die Eingabeaufforderung (CMD) statt PowerShell:
+
+Windows-Taste drücken
+cmd eingeben
+Enter drücken
+Dann:
+cd C:\Users\Profe\Meine Ablage (michaelkohl71@gmail.com)\7300_Git\replit-emotional-arc\replit-emotional-arc
+npm install
+npm run dev
+
+
 ```bash
 npm install
 ```
