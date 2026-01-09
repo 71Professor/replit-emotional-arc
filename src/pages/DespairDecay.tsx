@@ -523,6 +523,21 @@ export default function DespairDecay() {
               </p>
             </PackCard>
           </div>
+
+          {/* Puzzle Image - Atmospheric Visual */}
+          <div className="mt-16 relative bg-black/20 border border-[#6b5a47]/30 overflow-hidden">
+            <img
+              src="/material/puzzle/MoodPack1_puzzle.png"
+              alt="Despair & Decay - Visual Puzzle"
+              className="w-full h-auto opacity-80 transition-opacity duration-500 hover:opacity-90"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
+              <p className="text-[#d4d4d4] text-sm italic">
+                Fragmented impressions — layers of decay, slowly assembling into comprehension.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
