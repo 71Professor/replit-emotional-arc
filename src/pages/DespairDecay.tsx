@@ -635,17 +635,18 @@ export default function DespairDecay() {
             6. Design
           </h2>
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-8 mb-8 text-[#7a7a7a]">6.1 Color Palette</h3>
-          <div className="flex gap-4 flex-wrap mt-8">
-            {colorPalette.map((c, i) => (
-              <div key={i} className="flex flex-col items-center gap-2">
-                <div className="w-20 h-20 border border-white/10 shadow-lg" style={{ backgroundColor: c.color }} />
-                <div className="text-sm text-[#d4d4d4]">{c.label}</div>
-              </div>
-            ))}
-          </div>
+          <PackCard title="6.1 Color Palette">
+            <div className="flex gap-4 flex-wrap">
+              {colorPalette.map((c, i) => (
+                <div key={i} className="flex flex-col items-center gap-2">
+                  <div className="w-20 h-20 border border-white/10 shadow-lg" style={{ backgroundColor: c.color }} />
+                  <div className="text-sm text-[#d4d4d4]">{c.label}</div>
+                </div>
+              ))}
+            </div>
+          </PackCard>
 
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-16 mt-8">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-16 mt-16">
             <PackCard title="6.2 Light">
               <p className="text-[#d4d4d4] leading-relaxed text-lg">
                 Flat, diffuse, low contrast.<br />
