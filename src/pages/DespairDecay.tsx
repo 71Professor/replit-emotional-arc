@@ -645,18 +645,25 @@ export default function DespairDecay() {
             ))}
           </div>
 
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">6.2 Light</h3>
-          <p className="text-[#d4d4d4] leading-relaxed">
-            Flat, diffuse, low contrast.<br />
-            No highlights.<br />
-            No spotlight.
-          </p>
-
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">6.3 Textures</h3>
-          <p className="text-[#d4d4d4] leading-relaxed">Rust, mold, dust, damp surfaces, peeling layers.</p>
-
-          <h3 className="font-display text-xl font-semibold tracking-[0.05em] mt-16 mb-8 text-[#7a7a7a]">6.4 Shapes & Symbols</h3>
-          <PackList items={['Cracks', 'Layers', 'Fractures', 'Deformed rectangles', 'Repetition without progression']} />
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-16 mt-8">
+            <PackCard title="6.2 Light">
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                Flat, diffuse, low contrast.<br />
+                No highlights.<br />
+                No spotlight.
+              </p>
+            </PackCard>
+            <PackCard title="6.3 Textures">
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                Rust | mold | dust | damp surfaces | peeling layers
+              </p>
+            </PackCard>
+            <PackCard title="6.4 Shapes & Symbols">
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                Cracks | Layers | Fractures | Deformed rectangles | Repetition without progression
+              </p>
+            </PackCard>
+          </div>
         </div>
       </section>
 
