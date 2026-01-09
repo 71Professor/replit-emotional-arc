@@ -262,7 +262,7 @@ function AudioPlayer() {
       <h4 className="font-display text-lg font-semibold tracking-[0.05em] mb-4 text-[#8b4a3a]">
         🎵 Still Decaying — Sample Track
       </h4>
-      <audio controls className="w-full" style={{ filter: 'sepia(20%) saturate(70%)' }}>
+      <audio controls className="w-full" style={{ filter: 'sepia(20%) saturate(70%)', opacity: 0.8 }}>
         <source src="/material/songs/song1.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
