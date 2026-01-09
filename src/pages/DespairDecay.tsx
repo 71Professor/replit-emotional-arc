@@ -400,7 +400,7 @@ export default function DespairDecay() {
         </div>
         <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(122,122,122,0.03)_2px,rgba(122,122,122,0.03)_4px)] pointer-events-none" />
         <div className="font-display text-base tracking-[0.3em] text-[#8b4a3a]/80 mb-4 drop-shadow-[0_0_20px_rgba(139,74,58,0.3)]">
-          E-MOODPACK 1
+          MOODPACK 1
         </div>
         <h1 className="font-display text-[clamp(3rem,8vw,5rem)] font-bold tracking-[0.05em] text-[#6b5a47] mb-8 drop-shadow-[0_2px_10px_rgba(107,90,71,0.5)]">
           DESPAIR & DECAY
@@ -517,7 +517,7 @@ export default function DespairDecay() {
             </PackCard>
             <PackCard title="2.4 Language Tone">
               <p className="text-[#d4d4d4] leading-relaxed text-lg">
-                Dry, tired, heavy, repetitive.<br />
+                dry | tired | heavy | repetitive.<br />
                 More <strong className="text-white">state</strong> than action.<br />
                 Physical before emotional.
               </p>
@@ -532,11 +532,7 @@ export default function DespairDecay() {
               className="w-full h-auto opacity-80 transition-opacity duration-500 hover:opacity-90"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-              <p className="text-[#d4d4d4] text-sm italic">
-                Fragmented impressions — layers of decay, slowly assembling into comprehension.
-              </p>
-            </div>
+           
           </div>
         </div>
       </section>
