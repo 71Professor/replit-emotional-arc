@@ -173,23 +173,19 @@ Slowly drifting nebula fog. Subtle starfield motion. Film grain. Low contrast. E
 
 ### **Light**
 
-Low-key, minimal contrast. Distant, sparse light sources.
+Low-key, minimal contrast, distant, sparse light sources
 
 ---
 
 ### **Textures**
 
-Nebula fog, cosmic dust, noise / grain, abrasive surfaces
+Nebula fog, cosmic dust, noise, grain, abrasive surfaces
 
 ---
 
 ### **Forms & Symbols**
 
-* Spirals  
-* Horizons  
-* Fractures  
-* Incomplete circles  
-* Torn lines
+Spirals, horizons, fractures, incomplete circles, torn lines
 
 ---
 
