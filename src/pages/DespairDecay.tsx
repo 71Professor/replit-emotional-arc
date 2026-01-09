@@ -501,13 +501,19 @@ export default function DespairDecay() {
 
           <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-16 mt-8">
             <PackCard title="2.1 Key Terms">
-              <PackList items={keyTerms} />
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                {keyTerms.join(' | ')}
+              </p>
             </PackCard>
             <PackCard title="2.2 Verbs">
-              <PackList items={verbs} />
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                {verbs.join(' | ')}
+              </p>
             </PackCard>
             <PackCard title="2.3 Adjectives">
-              <PackList items={adjectives} />
+              <p className="text-[#d4d4d4] leading-relaxed text-lg">
+                {adjectives.join(' | ')}
+              </p>
             </PackCard>
             <PackCard title="2.4 Language Tone">
               <p className="text-[#d4d4d4] leading-relaxed text-lg">
