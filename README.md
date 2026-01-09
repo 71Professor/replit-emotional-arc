@@ -21,6 +21,7 @@ cmd eingeben
 Enter drücken
 Dann:
 cd C:\Users\Profe\Meine Ablage (michaelkohl71@gmail.com)\7300_Git\replit-emotional-arc\replit-emotional-arc
+oder G:\Meine Ablage\7300_Git\replit-emotional-arc (PC)
 npm install
 npm run dev
 
